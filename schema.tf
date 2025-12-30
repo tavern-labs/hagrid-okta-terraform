@@ -32,10 +32,10 @@ resource "okta_group_schema_property" "approval_type" {
   }
 }
 
-# Approver emails that can approve
-resource "okta_group_schema_property" "approver_emails" {
-  index       = "approver_emails"
-  title       = "Approver Emails"
+# Approval emails that can approve
+resource "okta_group_schema_property" "approval_emails" {
+  index       = "approval_emails"
+  title       = "Approval Emails"
   type        = "array"
   array_type  = "string"
   description = "List of email addresses authorized to approve for this group"

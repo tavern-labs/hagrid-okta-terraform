@@ -91,7 +91,7 @@ resource "okta_group" "app_slack_admin" {
 
   custom_profile_attributes = jsonencode({
     approval_type      = "ACCOUNT_ID"
-    approver_emails    = ["minerva-mcgonagall@hogwarts.com", "hermione-granger@hogwarts.com"]
+    approval_emails = ["minerva-mcgonagall@hogwarts.com", "hermione-granger@hogwarts.com"]
     approval_logic     = "ANY"
     approval_threshold = 1
   })
@@ -103,7 +103,7 @@ resource "okta_group" "app_confluence_admin" {
 
   custom_profile_attributes = jsonencode({
     approval_type      = "ACCOUNT_ID"
-    approver_emails    = ["minerva-mcgonagall@hogwarts.com", "hermione-granger@hogwarts.com"]
+    approval_emails = ["minerva-mcgonagall@hogwarts.com", "hermione-granger@hogwarts.com"]
     approval_logic     = "ANY"
     approval_threshold = 1
   })
@@ -115,7 +115,7 @@ resource "okta_group" "app_pagerduty_responder" {
 
   custom_profile_attributes = jsonencode({
     approval_type      = "ACCOUNT_ID"
-    approver_emails    = ["arthur-weasley@hogwarts.com", "ron-weasley@hogwarts.com", "sirius-black@hogwarts.com"]
+    approval_emails = ["arthur-weasley@hogwarts.com", "ron-weasley@hogwarts.com", "sirius-black@hogwarts.com"]
     approval_logic     = "ANY"
     approval_threshold = 1
   })
@@ -129,7 +129,7 @@ resource "okta_group" "app_aws_admin" {
 
   custom_profile_attributes = jsonencode({
     approval_type      = "ACCOUNT_ID"
-    approver_emails    = ["albus-dumbledore@hogwarts.com", "arthur-weasley@hogwarts.com", "sirius-black@hogwarts.com"]
+    approval_emails = ["albus-dumbledore@hogwarts.com", "arthur-weasley@hogwarts.com", "sirius-black@hogwarts.com"]
     approval_logic     = "ANY"
     approval_threshold = 2
   })
@@ -141,7 +141,7 @@ resource "okta_group" "app_datadog_admin" {
 
   custom_profile_attributes = jsonencode({
     approval_type      = "ACCOUNT_ID"
-    approver_emails    = ["arthur-weasley@hogwarts.com", "ron-weasley@hogwarts.com", "sirius-black@hogwarts.com"]
+    approval_emails = ["arthur-weasley@hogwarts.com", "ron-weasley@hogwarts.com", "sirius-black@hogwarts.com"]
     approval_logic     = "ANY"
     approval_threshold = 2
   })
@@ -155,7 +155,7 @@ resource "okta_group" "app_jira_system_admin" {
 
   custom_profile_attributes = jsonencode({
     approval_type      = "ACCOUNT_ID"
-    approver_emails    = ["minerva-mcgonagall@hogwarts.com", "hermione-granger@hogwarts.com"]
+    approval_emails = ["minerva-mcgonagall@hogwarts.com", "hermione-granger@hogwarts.com"]
     approval_logic     = "ALL"
     approval_threshold = 0
   })
@@ -167,7 +167,7 @@ resource "okta_group" "app_github_org_owner" {
 
   custom_profile_attributes = jsonencode({
     approval_type      = "ACCOUNT_ID"
-    approver_emails    = ["albus-dumbledore@hogwarts.com", "minerva-mcgonagall@hogwarts.com"]
+    approval_emails = ["albus-dumbledore@hogwarts.com", "minerva-mcgonagall@hogwarts.com"]
     approval_logic     = "ALL"
     approval_threshold = 2
   })
@@ -181,7 +181,7 @@ resource "okta_group" "app_aws_developer" {
 
   custom_profile_attributes = jsonencode({
     approval_type      = "BOTH"
-    approver_emails    = ["arthur-weasley@hogwarts.com", "sirius-black@hogwarts.com"]
+    approval_emails = ["arthur-weasley@hogwarts.com", "sirius-black@hogwarts.com"]
     approval_logic     = "ANY"
     approval_threshold = 1
   })
@@ -193,7 +193,7 @@ resource "okta_group" "app_jira_service_desk_agent" {
 
   custom_profile_attributes = jsonencode({
     approval_type      = "BOTH"
-    approver_emails    = ["hermione-granger@hogwarts.com"]
+    approval_emails = ["hermione-granger@hogwarts.com"]
     approval_logic     = "ANY"
     approval_threshold = 1
   })
@@ -205,7 +205,7 @@ resource "okta_group" "app_slack_org_admin" {
 
   custom_profile_attributes = jsonencode({
     approval_type      = "BOTH"
-    approver_emails    = ["minerva-mcgonagall@hogwarts.com", "hermione-granger@hogwarts.com"]
+    approval_emails = ["minerva-mcgonagall@hogwarts.com", "hermione-granger@hogwarts.com"]
     approval_logic     = "ANY"
     approval_threshold = 2
   })
@@ -219,7 +219,7 @@ resource "okta_group" "app_aws_billing_admin" {
 
   custom_profile_attributes = jsonencode({
     approval_type      = "BOTH"
-    approver_emails    = ["remus-lupin@hogwarts.com"]
+    approval_emails = ["remus-lupin@hogwarts.com"]
     approval_logic     = "ALL"
     approval_threshold = 1
   })
@@ -231,7 +231,7 @@ resource "okta_group" "app_github_security_team" {
 
   custom_profile_attributes = jsonencode({
     approval_type      = "BOTH"
-    approver_emails    = ["severus-snape@hogwarts.com"]
+    approval_emails = ["severus-snape@hogwarts.com"]
     approval_logic     = "ALL"
     approval_threshold = 1
   })
@@ -243,7 +243,7 @@ resource "okta_group" "app_pagerduty_admin" {
 
   custom_profile_attributes = jsonencode({
     approval_type      = "BOTH"
-    approver_emails    = ["arthur-weasley@hogwarts.com", "ron-weasley@hogwarts.com", "sirius-black@hogwarts.com"]
+    approval_emails = ["arthur-weasley@hogwarts.com", "ron-weasley@hogwarts.com", "sirius-black@hogwarts.com"]
     approval_logic     = "ALL"
     approval_threshold = 0
   })
@@ -255,7 +255,7 @@ resource "okta_group" "app_datadog_billing_admin" {
 
   custom_profile_attributes = jsonencode({
     approval_type      = "BOTH"
-    approver_emails    = ["albus-dumbledore@hogwarts.com", "remus-lupin@hogwarts.com"]
+    approval_emails = ["albus-dumbledore@hogwarts.com", "remus-lupin@hogwarts.com"]
     approval_logic     = "ALL"
     approval_threshold = 2
   })
@@ -269,7 +269,7 @@ resource "okta_group" "app_confluence_space_admin" {
 
   custom_profile_attributes = jsonencode({
     approval_type      = "ACCOUNT_ID"
-    approver_emails    = ["hermione-granger@hogwarts.com"]
+    approval_emails = ["hermione-granger@hogwarts.com"]
     approval_logic     = "ANY"
     approval_threshold = 1
   })
@@ -281,7 +281,7 @@ resource "okta_group" "app_aws_prod_readonly" {
 
   custom_profile_attributes = jsonencode({
     approval_type      = "BOTH"
-    approver_emails    = ["sirius-black@hogwarts.com"]
+    approval_emails = ["sirius-black@hogwarts.com"]
     approval_logic     = "ANY"
     approval_threshold = 1
   })

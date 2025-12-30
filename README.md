@@ -18,7 +18,7 @@ Four custom attributes enable flexible approval logic:
 | Attribute | Type | Description |
 |-----------|------|-------------|
 | `approval_type` | enum | Who must approve: `NONE`, `MANAGER`, `ACCOUNT_ID`, `BOTH`, `MANUAL` |
-| `approval_account_ids` | array | List of Okta user IDs authorized to approve |
+| `approval_emails` | array | List of email addresses authorized to approve |
 | `approval_logic` | enum | `ALL` (AND conditions) or `ANY` (OR conditions) |
 | `approval_threshold` | integer | Number of approvals required (0 with ALL = require all) |
 
@@ -30,9 +30,19 @@ The `groups.tf` file demonstrates all possible approval patterns:
 - **Manager only** - Direct manager approval (e.g., `app-github-developer`)
 - **Designated approvers** - Any one, two, or N specific approvers (e.g., `app-slack-admin`)
 - **Unanimous approval** - All designated approvers required (e.g., `app-jira-system-admin`)
-- **Flexible OR logic** - Manager OR any account ID (e.g., `app-aws-developer`)
-- **Strict AND logic** - Manager AND account IDs (e.g., `app-aws-billing-admin`)
+- **Flexible OR logic** - Manager OR any approver email (e.g., `app-aws-developer`)
+- **Strict AND logic** - Manager AND approver emails (e.g., `app-aws-billing-admin`)
 - **Manual review** - Admin-only approval outside automated flows
+
+## Test Data
+
+Groups use Harry Potter character emails (`@hogwarts.com`) to simulate a realistic organizational hierarchy with 8 test accounts:
+
+- **Executive:** Albus Dumbledore (CEO/CTO)
+- **VPs:** Minerva McGonagall (Engineering), Severus Snape (Security), Arthur Weasley (Operations)
+- **Directors/Managers:** Hermione Granger (Platform), Ron Weasley (SRE), Sirius Black (DevOps), Remus Lupin (Finance)
+
+Approvers realistically overlap across groups based on their role responsibilities, enabling comprehensive testing with minimal account creation.
 
 ## Group Naming Convention
 
