@@ -2,6 +2,16 @@
 # Application Access Groups - RBAC for AI Agent
 # Apps: Jira, Slack, GitHub, AWS, Confluence, PagerDuty, Datadog
 # Prefix: app- (distinguishes app access groups from org/security/other groups)
+#
+# Organizational Structure (for testing):
+# - albus-dumbledore@hogwarts.com   - CEO/CTO (executive approvals)
+# - minerva-mcgonagall@hogwarts.com - VP Engineering (platform/engineering)
+# - severus-snape@hogwarts.com      - VP Security (security approvals)
+# - arthur-weasley@hogwarts.com     - VP Operations (SRE/ops)
+# - hermione-granger@hogwarts.com   - Director of Platform Engineering
+# - ron-weasley@hogwarts.com        - SRE Manager
+# - sirius-black@hogwarts.com       - DevOps Manager
+# - remus-lupin@hogwarts.com        - Finance Manager
 # =============================================================================
 
 # NO APPROVAL REQUIRED - Self-service access
@@ -80,10 +90,10 @@ resource "okta_group" "app_slack_admin" {
   description = "Slack workspace administrator - any IT admin can approve"
 
   custom_profile_attributes = jsonencode({
-    approval_type         = "ACCOUNT_ID"
-    approval_account_ids  = ["00u1234567890abcde1", "00u1234567890abcde2", "00u1234567890abcde3"]
-    approval_logic        = "ANY"
-    approval_threshold    = 1
+    approval_type      = "ACCOUNT_ID"
+    approval_emails = ["minerva-mcgonagall@hogwarts.com", "hermione-granger@hogwarts.com"]
+    approval_logic     = "ANY"
+    approval_threshold = 1
   })
 }
 
@@ -92,10 +102,10 @@ resource "okta_group" "app_confluence_admin" {
   description = "Confluence space administrator - any platform admin can approve"
 
   custom_profile_attributes = jsonencode({
-    approval_type         = "ACCOUNT_ID"
-    approval_account_ids  = ["00u1234567890abcde1", "00u1234567890abcde2"]
-    approval_logic        = "ANY"
-    approval_threshold    = 1
+    approval_type      = "ACCOUNT_ID"
+    approval_emails = ["minerva-mcgonagall@hogwarts.com", "hermione-granger@hogwarts.com"]
+    approval_logic     = "ANY"
+    approval_threshold = 1
   })
 }
 
@@ -104,10 +114,10 @@ resource "okta_group" "app_pagerduty_responder" {
   description = "PagerDuty on-call responder - any SRE lead can approve"
 
   custom_profile_attributes = jsonencode({
-    approval_type         = "ACCOUNT_ID"
-    approval_account_ids  = ["00u1234567890abcde4", "00u1234567890abcde5", "00u1234567890abcde6"]
-    approval_logic        = "ANY"
-    approval_threshold    = 1
+    approval_type      = "ACCOUNT_ID"
+    approval_emails = ["arthur-weasley@hogwarts.com", "ron-weasley@hogwarts.com", "sirius-black@hogwarts.com"]
+    approval_logic     = "ANY"
+    approval_threshold = 1
   })
 }
 
@@ -118,10 +128,10 @@ resource "okta_group" "app_aws_admin" {
   description = "AWS administrator access - requires two cloud architects"
 
   custom_profile_attributes = jsonencode({
-    approval_type         = "ACCOUNT_ID"
-    approval_account_ids  = ["00u1234567890abcde7", "00u1234567890abcde8", "00u1234567890abcde9", "00u1234567890abcdea"]
-    approval_logic        = "ANY"
-    approval_threshold    = 2
+    approval_type      = "ACCOUNT_ID"
+    approval_emails = ["albus-dumbledore@hogwarts.com", "arthur-weasley@hogwarts.com", "sirius-black@hogwarts.com"]
+    approval_logic     = "ANY"
+    approval_threshold = 2
   })
 }
 
@@ -130,10 +140,10 @@ resource "okta_group" "app_datadog_admin" {
   description = "Datadog admin with billing access - two SRE managers required"
 
   custom_profile_attributes = jsonencode({
-    approval_type         = "ACCOUNT_ID"
-    approval_account_ids  = ["00u1234567890abcdeb", "00u1234567890abcdec", "00u1234567890abcded"]
-    approval_logic        = "ANY"
-    approval_threshold    = 2
+    approval_type      = "ACCOUNT_ID"
+    approval_emails = ["arthur-weasley@hogwarts.com", "ron-weasley@hogwarts.com", "sirius-black@hogwarts.com"]
+    approval_logic     = "ANY"
+    approval_threshold = 2
   })
 }
 
@@ -144,10 +154,10 @@ resource "okta_group" "app_jira_system_admin" {
   description = "Jira system administrator - all platform leads must approve"
 
   custom_profile_attributes = jsonencode({
-    approval_type         = "ACCOUNT_ID"
-    approval_account_ids  = ["00u1234567890abcdee", "00u1234567890abcdef", "00u1234567890abcdeg"]
-    approval_logic        = "ALL"
-    approval_threshold    = 0
+    approval_type      = "ACCOUNT_ID"
+    approval_emails = ["minerva-mcgonagall@hogwarts.com", "hermione-granger@hogwarts.com"]
+    approval_logic     = "ALL"
+    approval_threshold = 0
   })
 }
 
@@ -156,10 +166,10 @@ resource "okta_group" "app_github_org_owner" {
   description = "GitHub organization owner - all engineering directors must approve"
 
   custom_profile_attributes = jsonencode({
-    approval_type         = "ACCOUNT_ID"
-    approval_account_ids  = ["00u1234567890abcdeh", "00u1234567890abcdei"]
-    approval_logic        = "ALL"
-    approval_threshold    = 2
+    approval_type      = "ACCOUNT_ID"
+    approval_emails = ["albus-dumbledore@hogwarts.com", "minerva-mcgonagall@hogwarts.com"]
+    approval_logic     = "ALL"
+    approval_threshold = 2
   })
 }
 
@@ -170,10 +180,10 @@ resource "okta_group" "app_aws_developer" {
   description = "AWS developer access - manager or any cloud lead can approve"
 
   custom_profile_attributes = jsonencode({
-    approval_type         = "BOTH"
-    approval_account_ids  = ["00u1234567890abcdej", "00u1234567890abcdek", "00u1234567890abcdel"]
-    approval_logic        = "ANY"
-    approval_threshold    = 1
+    approval_type      = "BOTH"
+    approval_emails = ["arthur-weasley@hogwarts.com", "sirius-black@hogwarts.com"]
+    approval_logic     = "ANY"
+    approval_threshold = 1
   })
 }
 
@@ -182,10 +192,10 @@ resource "okta_group" "app_jira_service_desk_agent" {
   description = "Jira Service Desk agent - manager or any support lead can approve"
 
   custom_profile_attributes = jsonencode({
-    approval_type         = "BOTH"
-    approval_account_ids  = ["00u1234567890abcdem", "00u1234567890abcden"]
-    approval_logic        = "ANY"
-    approval_threshold    = 1
+    approval_type      = "BOTH"
+    approval_emails = ["hermione-granger@hogwarts.com"]
+    approval_logic     = "ANY"
+    approval_threshold = 1
   })
 }
 
@@ -194,10 +204,10 @@ resource "okta_group" "app_slack_org_admin" {
   description = "Slack org-level admin - manager or two IT admins can approve"
 
   custom_profile_attributes = jsonencode({
-    approval_type         = "BOTH"
-    approval_account_ids  = ["00u1234567890abcdeo", "00u1234567890abcdep", "00u1234567890abcdeq"]
-    approval_logic        = "ANY"
-    approval_threshold    = 2
+    approval_type      = "BOTH"
+    approval_emails = ["minerva-mcgonagall@hogwarts.com", "hermione-granger@hogwarts.com"]
+    approval_logic     = "ANY"
+    approval_threshold = 2
   })
 }
 
@@ -208,10 +218,10 @@ resource "okta_group" "app_aws_billing_admin" {
   description = "AWS billing administrator - manager AND finance lead required"
 
   custom_profile_attributes = jsonencode({
-    approval_type         = "BOTH"
-    approval_account_ids  = ["00u1234567890abcder"]
-    approval_logic        = "ALL"
-    approval_threshold    = 1
+    approval_type      = "BOTH"
+    approval_emails = ["remus-lupin@hogwarts.com"]
+    approval_logic     = "ALL"
+    approval_threshold = 1
   })
 }
 
@@ -220,10 +230,10 @@ resource "okta_group" "app_github_security_team" {
   description = "GitHub security team access - manager AND security lead required"
 
   custom_profile_attributes = jsonencode({
-    approval_type         = "BOTH"
-    approval_account_ids  = ["00u1234567890abcdes"]
-    approval_logic        = "ALL"
-    approval_threshold    = 1
+    approval_type      = "BOTH"
+    approval_emails = ["severus-snape@hogwarts.com"]
+    approval_logic     = "ALL"
+    approval_threshold = 1
   })
 }
 
@@ -232,10 +242,10 @@ resource "okta_group" "app_pagerduty_admin" {
   description = "PagerDuty administrator - manager AND all SRE leads required"
 
   custom_profile_attributes = jsonencode({
-    approval_type         = "BOTH"
-    approval_account_ids  = ["00u1234567890abcdet", "00u1234567890abcdeu", "00u1234567890abcdev"]
-    approval_logic        = "ALL"
-    approval_threshold    = 0
+    approval_type      = "BOTH"
+    approval_emails = ["arthur-weasley@hogwarts.com", "ron-weasley@hogwarts.com", "sirius-black@hogwarts.com"]
+    approval_logic     = "ALL"
+    approval_threshold = 0
   })
 }
 
@@ -244,10 +254,10 @@ resource "okta_group" "app_datadog_billing_admin" {
   description = "Datadog billing admin - manager AND two of three finance leads"
 
   custom_profile_attributes = jsonencode({
-    approval_type         = "BOTH"
-    approval_account_ids  = ["00u1234567890abcdew", "00u1234567890abcdex", "00u1234567890abcdey"]
-    approval_logic        = "ALL"
-    approval_threshold    = 2
+    approval_type      = "BOTH"
+    approval_emails = ["albus-dumbledore@hogwarts.com", "remus-lupin@hogwarts.com"]
+    approval_logic     = "ALL"
+    approval_threshold = 2
   })
 }
 
@@ -258,10 +268,10 @@ resource "okta_group" "app_confluence_space_admin" {
   description = "Confluence space admin - specific platform owner approves"
 
   custom_profile_attributes = jsonencode({
-    approval_type         = "ACCOUNT_ID"
-    approval_account_ids  = ["00u1234567890abcdez"]
-    approval_logic        = "ANY"
-    approval_threshold    = 1
+    approval_type      = "ACCOUNT_ID"
+    approval_emails = ["hermione-granger@hogwarts.com"]
+    approval_logic     = "ANY"
+    approval_threshold = 1
   })
 }
 
@@ -270,9 +280,9 @@ resource "okta_group" "app_aws_prod_readonly" {
   description = "AWS production read-only - manager or DevOps lead approves"
 
   custom_profile_attributes = jsonencode({
-    approval_type         = "BOTH"
-    approval_account_ids  = ["00u1234567890abcdf0"]
-    approval_logic        = "ANY"
-    approval_threshold    = 1
+    approval_type      = "BOTH"
+    approval_emails = ["sirius-black@hogwarts.com"]
+    approval_logic     = "ANY"
+    approval_threshold = 1
   })
 }
