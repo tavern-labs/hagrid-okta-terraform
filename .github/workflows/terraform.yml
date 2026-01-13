@@ -73,6 +73,4 @@ jobs:
         run: terraform plan -out=deploy.tfplan -input=false
 
       - name: Terraform Apply
-        run: terraform apply -input=false -auto-approve deploy.tfplan
-        env: 
-          TF_LOG: TRACE
+        run: TF_LOG=TRACE terraform apply -input=false -auto-approve deploy.tfplan
