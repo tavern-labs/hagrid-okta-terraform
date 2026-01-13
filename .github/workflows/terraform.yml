@@ -7,6 +7,7 @@ on:
     branches: [ "main" ]
 
 env:
+  TF_LOG: TRACE
   TF_VAR_okta_org_name: ${{ secrets.OKTA_ORG_NAME }}
   TF_VAR_okta_base_url: ${{ secrets.OKTA_BASE_URL }}
   TF_VAR_okta_client_id: ${{ secrets.OKTA_CLIENT_ID }}
