@@ -220,6 +220,7 @@ locals {
   }
 }
 
+/*
 # Create all application access groups using for_each
 resource "okta_group" "app_groups" {
   for_each = local.okta_groups
@@ -237,7 +238,7 @@ resource "okta_group" "app_groups" {
   ]
 */
 
-/*
+
   # Build custom_profile_attributes, filtering out null values
   custom_profile_attributes = jsonencode({
     for k, v in {
@@ -256,5 +257,6 @@ removed {
     destroy = false # This ensures the groups STAY in Okta
   }
 }
+
 
 
