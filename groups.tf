@@ -237,6 +237,7 @@ resource "okta_group" "app_groups" {
   ]
 */
 
+/*
   # Build custom_profile_attributes, filtering out null values
   custom_profile_attributes = jsonencode({
     for k, v in {
@@ -247,4 +248,13 @@ resource "okta_group" "app_groups" {
     } : k => v if v != null
   })
 }
+*/
+
+removed {
+  from = okta_group.app_groups
+  lifecycle {
+    destroy = false # This ensures the groups STAY in Okta
+  }
+}
+
 
