@@ -220,7 +220,7 @@ locals {
   }
 }
 
-/*
+
 # Create all application access groups using for_each
 resource "okta_group" "app_groups" {
   for_each = local.okta_groups
@@ -229,12 +229,12 @@ resource "okta_group" "app_groups" {
   description = each.value.description
 
   # Define dependencies once for all groups
-  depends_on = [
-    okta_group_schema_property.approval_type,
-    okta_group_schema_property.approval_emails,
-    okta_group_schema_property.approval_logic,
-    okta_group_schema_property.approval_threshold
-  ]
+  # depends_on = [
+  #   okta_group_schema_property.approval_type,
+  #   okta_group_schema_property.approval_emails,
+  #   okta_group_schema_property.approval_logic,
+  #   okta_group_schema_property.approval_threshold
+  # ]
 
 
   # Build custom_profile_attributes, filtering out null values
@@ -246,14 +246,6 @@ resource "okta_group" "app_groups" {
       approval_threshold = each.value.approval_threshold
     } : k => v if v != null
   })
-}
-*/
-
-removed {
-  from = okta_group.app_groups
-  lifecycle {
-    destroy = false # This ensures the groups STAY in Okta
-  }
 }
 
 
