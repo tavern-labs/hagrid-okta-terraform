@@ -7,9 +7,9 @@
 # - albus-dumbledore@hogwarts.com   - CEO/CTO (executive approvals)
 # - minerva-mcgonagall@hogwarts.com - VP Engineering (platform/engineering)
 # - severus-snape@hogwarts.com      - VP Security (security approvals)
-# - arthur-weasley@hogwarts.com     - VP Operations (SRE/ops)
-# - hermione-granger@hogwarts.com   - Director of Platform Engineering
-# - ron-weasley@hogwarts.com        - SRE Manager
+# - hoory+arthurweasley@protonmail.com     - VP Operations (SRE/ops)
+# - hoory+hermionegranger@protonmail.com   - Director of Platform Engineering
+# - hoory+ronweasley@protonmail.com        - SRE Manager
 # - sirius-black@hogwarts.com       - DevOps Manager
 # - remus-lupin@hogwarts.com        - Finance Manager
 # =============================================================================
@@ -83,7 +83,7 @@ locals {
       name               = "app-slack-admin"
       description        = "Slack workspace administrator - any IT admin can approve"
       approval_type      = "ACCOUNT_EMAIL"
-      approval_emails    = ["minerva-mcgonagall@hogwarts.com", "hermione-granger@hogwarts.com"]
+      approval_emails    = ["minerva-mcgonagall@hogwarts.com", "hoory+hermionegranger@protonmail.com"]
       approval_logic     = "ANY"
       approval_threshold = 1
     }
@@ -91,7 +91,7 @@ locals {
       name               = "app-confluence-admin"
       description        = "Confluence space administrator - any platform admin can approve"
       approval_type      = "ACCOUNT_EMAIL"
-      approval_emails    = ["minerva-mcgonagall@hogwarts.com", "hermione-granger@hogwarts.com"]
+      approval_emails    = ["minerva-mcgonagall@hogwarts.com", "hoory+hermionegranger@protonmail.com"]
       approval_logic     = "ANY"
       approval_threshold = 1
     }
@@ -99,7 +99,7 @@ locals {
       name               = "app-pagerduty-responder"
       description        = "PagerDuty on-call responder - any SRE lead can approve"
       approval_type      = "ACCOUNT_EMAIL"
-      approval_emails    = ["arthur-weasley@hogwarts.com", "ron-weasley@hogwarts.com", "sirius-black@hogwarts.com"]
+      approval_emails    = ["hoory+arthurweasley@protonmail.com", "hoory+ronweasley@protonmail.com", "sirius-black@hogwarts.com"]
       approval_logic     = "ANY"
       approval_threshold = 1
     }
@@ -109,7 +109,7 @@ locals {
       name               = "app-aws-admin"
       description        = "AWS administrator access - requires two cloud architects"
       approval_type      = "ACCOUNT_EMAIL"
-      approval_emails    = ["albus-dumbledore@hogwarts.com", "arthur-weasley@hogwarts.com", "sirius-black@hogwarts.com"]
+      approval_emails    = ["albus-dumbledore@hogwarts.com", "hoory+arthurweasley@protonmail.com", "sirius-black@hogwarts.com"]
       approval_logic     = "ANY"
       approval_threshold = 2
     }
@@ -117,7 +117,7 @@ locals {
       name               = "app-datadog-admin"
       description        = "Datadog admin with billing access - two SRE managers required"
       approval_type      = "ACCOUNT_EMAIL"
-      approval_emails    = ["arthur-weasley@hogwarts.com", "ron-weasley@hogwarts.com", "sirius-black@hogwarts.com"]
+      approval_emails    = ["hoory+arthurweasley@protonmail.com", "hoory+ronweasley@protonmail.com", "sirius-black@hogwarts.com"]
       approval_logic     = "ANY"
       approval_threshold = 2
     }
@@ -127,7 +127,7 @@ locals {
       name               = "app-jira-system-admin"
       description        = "Jira system administrator - all platform leads must approve"
       approval_type      = "ACCOUNT_EMAIL"
-      approval_emails    = ["minerva-mcgonagall@hogwarts.com", "hermione-granger@hogwarts.com"]
+      approval_emails    = ["minerva-mcgonagall@hogwarts.com", "hoory+hermionegranger@protonmail.com"]
       approval_logic     = "ALL"
       approval_threshold = 0
     }
@@ -145,7 +145,7 @@ locals {
       name               = "app-aws-developer"
       description        = "AWS developer access - manager or any cloud lead can approve"
       approval_type      = "BOTH"
-      approval_emails    = ["arthur-weasley@hogwarts.com", "sirius-black@hogwarts.com"]
+      approval_emails    = ["hoory+arthurweasley@protonmail.com", "sirius-black@hogwarts.com"]
       approval_logic     = "ANY"
       approval_threshold = 1
     }
@@ -153,7 +153,7 @@ locals {
       name               = "app-jira-service-desk-agent"
       description        = "Jira Service Desk agent - manager or any support lead can approve"
       approval_type      = "BOTH"
-      approval_emails    = ["hermione-granger@hogwarts.com"]
+      approval_emails    = ["hoory+hermionegranger@protonmail.com"]
       approval_logic     = "ANY"
       approval_threshold = 1
     }
@@ -161,7 +161,7 @@ locals {
       name               = "app-slack-org-admin"
       description        = "Slack org-level admin - manager or two IT admins can approve"
       approval_type      = "BOTH"
-      approval_emails    = ["minerva-mcgonagall@hogwarts.com", "hermione-granger@hogwarts.com"]
+      approval_emails    = ["minerva-mcgonagall@hogwarts.com", "hoory+hermionegranger@protonmail.com"]
       approval_logic     = "ANY"
       approval_threshold = 2
     }
@@ -187,7 +187,7 @@ locals {
       name               = "app-pagerduty-admin"
       description        = "PagerDuty administrator - manager AND all SRE leads required"
       approval_type      = "BOTH"
-      approval_emails    = ["arthur-weasley@hogwarts.com", "ron-weasley@hogwarts.com", "sirius-black@hogwarts.com"]
+      approval_emails    = ["hoory+arthurweasley@protonmail.com", "hoory+ronweasley@protonmail.com", "sirius-black@hogwarts.com"]
       approval_logic     = "ALL"
       approval_threshold = 0
     }
@@ -205,7 +205,7 @@ locals {
       name               = "app-confluence-space-admin"
       description        = "Confluence space admin - specific platform owner approves"
       approval_type      = "ACCOUNT_EMAIL"
-      approval_emails    = ["hermione-granger@hogwarts.com"]
+      approval_emails    = ["hoory+hermionegranger@protonmail.com"]
       approval_logic     = "ANY"
       approval_threshold = 1
     }
